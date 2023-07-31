@@ -17,9 +17,19 @@ public class CalculatorApp {
             System.out.print("Введите операцию (+, -, *, /, ^): ");
             char operator = view.getOperator();
 
+            // Проверка на допустимый символ операции
+            if (operator != '+' && operator != '-' && operator != '*' && operator != '/' && operator != '^') {
+                throw new InvalidOperatorException("Некорректный символ операции: используйте только +, -, *, / или ^!");
+            }
+
             // Запрос второго числа у пользователя
             System.out.print("Введите второе число: ");
             double num2 = view.getInputNumber();
+
+            // Проверка на некорректные числа
+            if (Double.isNaN(num1) || Double.isNaN(num2)) {
+                throw new InvalidNumberException("Некорректное число");
+            }
 
             double result = 0.0;
 
